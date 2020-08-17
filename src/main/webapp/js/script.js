@@ -2,8 +2,21 @@ var ws;
 
 function connect() {
     var username = document.getElementById("username").value;
-    ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
+    
+   // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
+     var loc = window.location
+    var port = loc.port;
+    // Openshift WS port is 8000
+    if (loc.hostname.indexOf('rhcloud.com', 0) > 0) {
+        port = 8000;
+    }
+    var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
+    var wsurl = wsProtocol + "://" + loc.hostname + ':' + port + loc.pathname
+            + "/../chat";
+    ws = new WebSocket(wsurl+username);
+    
+    
 
     ws.onmessage = function(event) {
     var log = document.getElementById("log");
