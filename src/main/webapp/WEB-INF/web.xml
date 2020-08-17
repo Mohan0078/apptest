@@ -1,0 +1,27 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>Message_Home</servlet-name>
+  	<display-name>Message_Home</display-name>
+  	<description></description>
+  	<servlet-class>com.patel.chat.Message_Home</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Friend_Messages</servlet-name>
+  	<display-name>Friend_Messages</display-name>
+  	<description></description>
+  	<servlet-class>com.patel.chat.Friend_Messages</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Message_Home</servlet-name>
+  	<url-pattern>/messages</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Friend_Messages</servlet-name>
+  	<url-pattern>/friend_messages</url-pattern>
+  </servlet-mapping>
+</web-app>
