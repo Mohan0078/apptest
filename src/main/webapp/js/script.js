@@ -13,7 +13,7 @@ function connect() {
      var port = (wsProtocol=="wss") ? ":8443" : ":8000";
 //      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
     
-    var wsurl = wsProtocol + "://" + loc.hostname + port +"/jws-app-chatapp/chat";
+    var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname +"/../chat";
     
     ws = new WebSocket(wsurl+username);
     
