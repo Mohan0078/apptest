@@ -14,7 +14,9 @@ function connect() {
      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
      ws = new WebSocket(wsurl+username);
     
-    username.innerHTML = wsurl+" "+username;
+    var log_1 = document.getElementById("log");
+    
+    log_1.innerHTML = wsurl+" "+username;
 
     ws.onmessage = function(event) {
     var log = document.getElementById("log");
