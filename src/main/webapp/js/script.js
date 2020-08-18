@@ -11,8 +11,11 @@ function connect() {
 
      var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
      var port = (wsProtocol=="wss") ? ":8443/" : ":8080/";
-     var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
-     ws = new WebSocket(wsurl+username);
+//      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
+    
+    var wsurl = wsProtocol + "://" + loc.hostname + port +"/jws-app-chatapp/chat";
+    
+    ws = new WebSocket(wsurl+username);
     
     var log_1 = document.getElementById("log");
     
