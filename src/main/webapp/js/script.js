@@ -5,7 +5,7 @@ function connect() {
     
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
-     var loc = window.location
+     var loc = window.location;
 
     var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
     var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
