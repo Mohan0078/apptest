@@ -3,18 +3,18 @@ var ws;
 function connect() {
     var username = document.getElementById("username").value;
     
-     ws = new WebSocket("ws://"+document.location.host+":8080/chat" + username);
+  //   ws = new WebSocket("ws://"+document.location.host+":8080/chat" + username);
 
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
-//      var loc = window.location;
+      var loc = window.location;
 
-//     var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-//     var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
-//             + "/../chat";
-//     ws = new WebSocket(wsurl+username);
+     var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
+     var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
+             + "/../chat";
+     ws = new WebSocket(wsurl+username);
     
-    
+    username.innerHTML = wsurl+" "+username;
 
     ws.onmessage = function(event) {
     var log = document.getElementById("log");
