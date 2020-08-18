@@ -3,7 +3,7 @@ var ws;
 function connect() {
     var username = document.getElementById("username").value;
     
-     ws = new WebSocket("ws://"+document.location.host+":8000/chat" + username);
+     ws = new WebSocket("ws://"+document.location.host+":8080/chat" + username);
 
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
