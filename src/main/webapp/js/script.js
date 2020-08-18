@@ -10,7 +10,7 @@ function connect() {
       var loc = window.location;
 
      var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-     var port = (wsProtocol=="wss") ? ":8443" : ":8080";
+     var port = (wsProtocol=="wss") ? ":8443" : ":8000";
 //      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
     
     var wsurl = wsProtocol + "://" + loc.hostname + port +"/jws-app-chatapp/chat";
