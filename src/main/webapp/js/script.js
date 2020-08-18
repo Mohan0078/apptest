@@ -3,14 +3,16 @@ var ws;
 function connect() {
     var username = document.getElementById("username").value;
     
+     ws = new WebSocket("ws://jws-app-chatapp.apps.ca-central-1.starter.openshift-online.com:8080/chat" + username);
+
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
-     var loc = window.location;
+//      var loc = window.location;
 
-    var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-    var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
-            + "/../chat";
-    ws = new WebSocket(wsurl+username);
+//     var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
+//     var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
+//             + "/../chat";
+//     ws = new WebSocket(wsurl+username);
     
     
 
