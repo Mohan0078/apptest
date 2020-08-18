@@ -10,7 +10,7 @@ function connect() {
       var loc = window.location;
 
      var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-     var wsurl = wsProtocol + "://" + loc.hostname + ':8080' + loc.pathname
+     var wsurl = wsProtocol + "://" + loc.hostname + ":8000" + loc.pathname
              + "/../chat";
      ws = new WebSocket(wsurl+username);
     
