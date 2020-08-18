@@ -3,7 +3,7 @@ var ws;
 function connect() {
     var username = document.getElementById("username").value;
     
-     ws = new WebSocket("ws://jws-app-chatapp.apps.ca-central-1.starter.openshift-online.com:8080/chat" + username);
+     ws = new WebSocket("ws://jws-app-chatapp.apps.ca-central-1.starter.openshift-online.com:8080/jws-app-chatapp/chat" + username);
 
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
