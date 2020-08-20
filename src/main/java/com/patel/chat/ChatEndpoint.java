@@ -29,8 +29,10 @@ public class ChatEndpoint {
     @OnOpen
     public void onOpen(Session session, @PathParam("username") String username) throws IOException, EncodeException {
         log.info(session.getId() + " connected!");
-
+            
+        
         this.session = session;
+        this.session.setMaxIdleTimeout(60000*100L);
         this.username = username;
         chatEndpoints.add(this);
         users.put(session.getId(), username);
