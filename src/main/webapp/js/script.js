@@ -13,12 +13,12 @@ function connect() {
 //      var port = (wsProtocol=="wss") ? ":8443" : ":8000";
 //      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
     
-    var wsurl = "";
-    if (window.location.protocol == 'http:') {
-    wsurl = 'ws://' + window.location.host + ':8080/jws-app/chat/'+username;
-  } else {
-    wsurl = 'wss://' + window.location.host + ':8443/jws-app/chat/'+username;
-  }
+    var wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
+//     if (window.location.protocol == 'http:') {
+//     wsurl = 'ws://' + window.location.host + ':8080/jws-app/chat/'+username;
+//   } else {
+//     wsurl = 'wss://' + window.location.host + ':8443/jws-app/chat/'+username;
+//   }
 
      var log_1 = document.getElementById("log");
     
