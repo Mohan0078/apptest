@@ -7,15 +7,21 @@ function connect() {
 
    // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
 
-      var loc = window.location;
+      
 
-     var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-     var port = (wsProtocol=="wss") ? ":8443" : ":8000";
+//      var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
+//      var port = (wsProtocol=="wss") ? ":8443" : ":8000";
 //      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
     
-    var wsurl = wsProtocol + "://" + loc.hostname + port + "/chatapp/chat";
+    var wsurl = "";
+    if (window.location.protocol == 'http:') {
+    wsurl = 'ws://' + window.location.host + ':8000/chat'+username);
+  } else {
+    wsurl = 'wss://' + window.location.host + ':8443/chat/'+username);
+  }
+
     
-    ws = new WebSocket(wsurl+username);
+    ws = new WebSocket(wsurl);
     
     var log_1 = document.getElementById("log");
     
