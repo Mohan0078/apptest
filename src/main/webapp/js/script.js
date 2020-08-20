@@ -15,17 +15,18 @@ function connect() {
     
     var wsurl = "";
     if (window.location.protocol == 'http:') {
-    wsurl = 'ws://' + window.location.host + ':8000/chat'+username);
+    wsurl = 'ws://' + window.location.host + ':8000/chat'+username;
   } else {
-    wsurl = 'wss://' + window.location.host + ':8443/chat/'+username);
+    wsurl = 'wss://' + window.location.host + ':8443/chat/'+username;
   }
 
+     var log_1 = document.getElementById("log");
+    
+    log_1.innerHTML = wsurl+" "+username;
     
     ws = new WebSocket(wsurl);
     
-    var log_1 = document.getElementById("log");
-    
-    log_1.innerHTML = wsurl+" "+username;
+
 
     ws.onmessage = function(event) {
     var log = document.getElementById("log");
