@@ -15,9 +15,9 @@ function connect() {
     
     var wsurl = "";
     if (window.location.protocol == 'http:') {
-    wsurl = 'ws://' + window.location.host + ':8080/jws-app-chatapp/chat/'+username;
+    wsurl = 'ws://' + window.location.host + ':8080/jws-app/chat/'+username;
   } else {
-    wsurl = 'wss://' + window.location.host + ':8443/jws-app-chatapp/chat/'+username;
+    wsurl = 'wss://' + window.location.host + ':8443/jws-app/chat/'+username;
   }
 
      var log_1 = document.getElementById("log");
