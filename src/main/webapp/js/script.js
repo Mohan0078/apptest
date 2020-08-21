@@ -93,7 +93,11 @@ function isOpen(ws) { return ws.readyState === ws.OPEN }
 function heartbeat() {
   if (!ws) return;
   if (ws.readyState !== 1) return;
-  ws.send("heartbeat");
+     var json_Ping =  JSON.stringify({
+        "to":"",
+        "content":""
+    });
+  ws.send(json_Ping); // sending a ping to server
   setTimeout(heartbeat, 500);
 }
 
