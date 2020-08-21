@@ -66,16 +66,23 @@ function send() {
     }
     else
     {
+      var username1 = document.getElementById("username").value; 
      if (window.location.protocol == 'http:') {
-     wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
+     wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
    } else {
-     wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
+     wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
    }
      var   ws1 = "";
      ws1 = new WebSocket(wsurl);
-     ws1.send(json);
+    while(true)
+    {
+    if(isOpen(ws1)){
+    ws1.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
+    break;
     }
+    }
+     }
 }
 
 function isOpen(ws) { return ws.readyState === ws.OPEN }
