@@ -67,13 +67,14 @@ function send() {
     else
     {
       var username1 = document.getElementById("username").value; 
+      var wsurl1 = "";
      if (window.location.protocol == 'http:') {
-     wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
+     wsurl1 = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
    } else {
-     wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
+     wsurl1 = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username1;
    }
      var   ws1 = "";
-     ws1 = new WebSocket(wsurl);
+     ws1 = new WebSocket(wsurl1);
     while(true)
     {
     if(isOpen(ws1)){
