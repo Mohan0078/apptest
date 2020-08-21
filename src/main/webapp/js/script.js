@@ -82,7 +82,7 @@ function send() {
     if(isOpen(ws1)){
     ws1.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
-    break;
+   // break;
     }
     //}
      }
