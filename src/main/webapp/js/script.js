@@ -51,7 +51,6 @@ function connect() {
       console.log("2 seconds passed, closing the socket");
       ws.close();
     }, 2000);
-  });
     
     ws.onclose = function(event){
  //   cancelKeepAlive();
