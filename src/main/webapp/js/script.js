@@ -71,9 +71,9 @@ function send() {
    } else {
      wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
    }
-        ws = "";
-     ws = new WebSocket(wsurl);
-     ws.send(json);
+     var   ws1 = "";
+     ws1 = new WebSocket(wsurl);
+     ws1.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
     }
 }
