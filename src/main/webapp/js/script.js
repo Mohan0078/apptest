@@ -1,4 +1,4 @@
-var ws;
+var ws=null;
 var timerID = 1000*60*5;
 var username = "";
 function connect() {
@@ -49,6 +49,8 @@ function connect() {
     ws.onerror = function(event){ 
     console.log("Error occured ..");    
     };
+     
+     heartbeat(); // for keeping active
     
 }
 
@@ -75,16 +77,23 @@ function send() {
    }
      var   ws1 = "";
      ws1 = new WebSocket(wsurl1);
-    while(true)
-    {
+    //while(true)
+    //{
     if(isOpen(ws1)){
     ws1.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
     break;
     }
-    }
+    //}
      }
 }
 
 function isOpen(ws) { return ws.readyState === ws.OPEN }
+
+function heartbeat() {
+  if (!ws) return;
+  if (ws.readyState !== 1) return;
+  ws.send("heartbeat");
+  setTimeout(heartbeat, 500);
+}
 
