@@ -60,7 +60,23 @@ function send() {
         "content":content
     });
 
-    ws.send(json);
+    if(isOpen(ws))
+    {ws.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
+    }
+    else
+    {
+     if (window.location.protocol == 'http:') {
+     wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
+   } else {
+     wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
+   }
+        ws = "";
+        ws = new WebSocket(wsurl);
+     ws.send(json);
+    log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
+    }
 }
+
+function isOpen(ws) { return ws.readyState === ws.OPEN }
 
