@@ -1,5 +1,5 @@
 var ws;
-var timerID = 1000L*60*5;
+var timerID = 1000*60*5;
 
 function connect() {
     var username = document.getElementById("username").value;
