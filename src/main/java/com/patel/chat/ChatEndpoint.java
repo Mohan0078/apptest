@@ -32,7 +32,7 @@ public class ChatEndpoint {
             
         
         this.session = session;
-        this.session.setMaxIdleTimeout(60000*100L);
+        session.setMaxIdleTimeout(300000);
         this.username = username;
         chatEndpoints.add(this);
         users.put(session.getId(), username);
@@ -47,7 +47,7 @@ public class ChatEndpoint {
     @OnMessage
     public void onMessage(Session session, Message message) throws IOException, EncodeException {
         log.info(message.toString());
-
+       session.setMaxIdleTimeout(300000);
         message.setFrom(users.get(session.getId()));
         user_Id = message.getFrom();
         friend_Id = message.getTo();
@@ -65,7 +65,7 @@ public class ChatEndpoint {
     @OnClose
     public void onClose(Session session) throws IOException, EncodeException {
         log.info(session.getId() + " disconnected!");
-
+        session.setMaxIdleTimeout(0);
         chatEndpoints.remove(this);
         Message message = new Message();
         message.setFrom(users.get(session.getId()));
