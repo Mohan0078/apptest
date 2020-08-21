@@ -24,7 +24,7 @@ function connect() {
     
     ws.onopen = function(event){ 
         console.log("Opening connections..");
-        setInterval(ping, 30000);
+        setInterval(ping, 15000);
 //         timerID = setTimeout(function () {
 //             console.log("5 seconds passed .."); }, 60000*3);
                  };
