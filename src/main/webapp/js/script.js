@@ -68,9 +68,9 @@ var tm=0;
 function ping() {
         ws.send('__ping__');
         tm = setTimeout(function () {
-console.log("5 seconds reached..");
+console.log("5 minutes reached..");
            /// ---connection closed ///
-    }, 5000);
+    }, 300000);
 }
 
 function pong() {
