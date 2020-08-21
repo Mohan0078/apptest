@@ -1,8 +1,8 @@
 var ws;
 var timerID = 1000*60*5;
-
+var username = "";
 function connect() {
-    var username = document.getElementById("username").value;
+     username = document.getElementById("username").value;
     
   //   ws = new WebSocket("ws://"+document.location.host+":8080/chat" + username);
 
@@ -72,7 +72,7 @@ function send() {
      wsurl = "wss://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
    }
         ws = "";
-        ws = new WebSocket(wsurl);
+     ws = new WebSocket(wsurl);
      ws.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
     }
