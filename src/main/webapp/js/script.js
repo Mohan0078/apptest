@@ -1,4 +1,5 @@
 var ws;
+var timerID = 0;
 
 function connect() {
     var username = document.getElementById("username").value;
@@ -26,6 +27,11 @@ function connect() {
     
     ws = new WebSocket(wsurl);
     
+    
+    ws.onopen = function(message){ 
+        console.log("Opening connections..");
+        keepAlive();
+                };
 
 
     ws.onmessage = function(event) {
@@ -39,6 +45,16 @@ function connect() {
         usersTextBox.innerHTML += message.username + "\n"; // putting all conneted users to a particulartext area
         document.getElementById('error-message').innerHTML = "<span class='error'>"+message.from+" : "+message.content+"</span><br>";    
 };
+    
+    ws.onclose = function(event){
+    cancelKeepAlive();
+    console.log("Closing the connections..");
+    };
+    
+    ws.onerror = function(event){ 
+    console.log("Error occured ..");    
+    };
+    
 }
 
 function send() {
@@ -51,4 +67,17 @@ function send() {
 
     ws.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
+}
+ 
+function keepAlive() { 
+    var timeout = 20000;  
+    if (ws.readyState == ws.OPEN) {  
+        ws.send('');  
+    }  
+    timerID = setTimeout(keepAlive, timeout);  
+}  
+function cancelKeepAlive() {  
+    if (timerID) {  
+        clearTimeout(timerID);  
+    }  
 }
