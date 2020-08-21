@@ -68,13 +68,23 @@ function send() {
     ws.send(json);
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
 }
+
+    
+
+// var makeTimeout = function () {
+//     return window.setTimeout(keepAlive(), timeout);
+// };
+
  
-function keepAlive() { 
-    var timeout = 20000;  
+function keepAlive() {  
+    var timeout = 20000;
     if (ws.readyState == ws.OPEN) {  
         ws.send('');  
     }  
-    timerID = setTimeout(keepAlive, timeout);  
+    timerID = function () {
+    return window.setTimeout(keepAlive, timeout);
+};
+        //setTimeout(keepAlive, timeout);  
 }  
 function cancelKeepAlive() {  
     if (timerID) {  
