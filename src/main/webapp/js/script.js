@@ -30,7 +30,7 @@ function connect() {
     
     ws.onopen = function(event){ 
         console.log("Opening connections..");
-        keepAlive();
+      //  keepAlive();
                 };
 
 
@@ -46,8 +46,15 @@ function connect() {
         document.getElementById('error-message').innerHTML = "<span class='error'>"+message.from+" : "+message.content+"</span><br>";    
 };
     
+    // for timeout setting..
+     ws.setTimeout(function() {
+      console.log("2 seconds passed, closing the socket");
+      ws.close();
+    }, 2000);
+  });
+    
     ws.onclose = function(event){
-    cancelKeepAlive();
+ //   cancelKeepAlive();
     console.log("Closing the connections..");
     };
     
@@ -69,13 +76,7 @@ function send() {
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
 }
 
-    
 
-// var makeTimeout = function () {
-//     return window.setTimeout(keepAlive(), timeout);
-// };
-
- 
 function keepAlive() {  
     var timeout = 20000;
     if (ws.readyState == ws.OPEN) {  
