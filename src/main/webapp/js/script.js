@@ -1,18 +1,12 @@
 var ws;
-var timerID = 0;
+var timerID = 20000;
 
 function connect() {
     var username = document.getElementById("username").value;
     
   //   ws = new WebSocket("ws://"+document.location.host+":8080/chat" + username);
 
-   // ws = new WebSocket("ws://" + document.location.host + "/ChatApp/chat/" + username);
-
-      
-
 //      var wsProtocol = window.location.protocol == "https:" ? "wss" : "ws";
-//      var port = (wsProtocol=="wss") ? ":8443" : ":8000";
-//      var wsurl = wsProtocol + "://" + loc.hostname + port + loc.pathname+ "/../chat";
     
     var wsurl = "ws://" + document.location.hostname + ":" + document.location.port + document.location.pathname + "chat/"+username;
 //     if (window.location.protocol == 'http:') {
@@ -30,7 +24,9 @@ function connect() {
     
     ws.onopen = function(event){ 
         console.log("Opening connections..");
-      //  keepAlive();
+        
+        timerID = setTimeout(function () {
+            console.log("5 seconds passed .."); }, 5000);
                 };
 
 
@@ -46,15 +42,14 @@ function connect() {
         document.getElementById('error-message').innerHTML = "<span class='error'>"+message.from+" : "+message.content+"</span><br>";    
 };
     
-    // for timeout setting..
-     ws.setTimeout(function() {
-      console.log("2 seconds passed, closing the socket");
-      ws.close();
-    }, 2000);
+
     
     ws.onclose = function(event){
- //   cancelKeepAlive();
     console.log("Closing the connections..");
+        if(timerID>0)
+        {
+            clearTimeout(timerID);  
+        }
     };
     
     ws.onerror = function(event){ 
@@ -75,19 +70,3 @@ function send() {
     log.innerHTML += "<span style='font-size:25px;'>Me : " + content + "</span>";
 }
 
-
-function keepAlive() {  
-    var timeout = 20000;
-    if (ws.readyState == ws.OPEN) {  
-        ws.send('');  
-    }  
-    timerID = function () {
-    return window.setTimeout(keepAlive, timeout);
-};
-        //setTimeout(keepAlive, timeout);  
-}  
-function cancelKeepAlive() {  
-    if (timerID) {  
-        clearTimeout(timerID);  
-    }  
-}
