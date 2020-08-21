@@ -28,7 +28,7 @@ function connect() {
     ws = new WebSocket(wsurl);
     
     
-    ws.onopen = function(message){ 
+    ws.onopen = function(event){ 
         console.log("Opening connections..");
         keepAlive();
                 };
