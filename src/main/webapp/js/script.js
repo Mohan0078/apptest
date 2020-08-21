@@ -1,5 +1,5 @@
 var ws;
-var timerID = 20000;
+var timerID = 1000L*60*5;
 
 function connect() {
     var username = document.getElementById("username").value;
@@ -26,7 +26,7 @@ function connect() {
         console.log("Opening connections..");
         
         timerID = setTimeout(function () {
-            console.log("5 seconds passed .."); }, 5000);
+            console.log("5 seconds passed .."); }, 60000*3);
                 };
 
 
