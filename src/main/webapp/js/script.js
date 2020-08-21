@@ -25,9 +25,9 @@ function connect() {
     ws.onopen = function(event){ 
         console.log("Opening connections..");
         
-        timerID = setTimeout(function () {
-            console.log("5 seconds passed .."); }, 60000*3);
-                };
+//         timerID = setTimeout(function () {
+//             console.log("5 seconds passed .."); }, 60000*3);
+                 };
 
 
     ws.onmessage = function(event) {
@@ -46,10 +46,10 @@ function connect() {
     
     ws.onclose = function(event){
     console.log("Closing the connections..");
-        if(timerID>0)
-        {
-            clearTimeout(timerID);  
-        }
+      //  if(timerID>0)
+        //{
+          //  clearTimeout(timerID);  
+       // }
     };
     
     ws.onerror = function(event){ 
