@@ -24,13 +24,20 @@ function connect() {
     
     ws.onopen = function(event){ 
         console.log("Opening connections..");
-        
+        setInterval(ping, 30000);
 //         timerID = setTimeout(function () {
 //             console.log("5 seconds passed .."); }, 60000*3);
                  };
 
 
     ws.onmessage = function(event) {
+        
+     var msg_Getting = event.data;
+    if (msg_Getting == '__pong__') {
+        pong();
+        return;
+    }
+        
     var log = document.getElementById("log");
     var usersTextBox = document.getElementById("usertextbox");
 
@@ -56,6 +63,19 @@ function connect() {
     console.log("Error occured ..");    
     };
     
+}
+var tm=0;
+function ping() {
+        ws.send('__ping__');
+        tm = setTimeout(function () {
+console.log("5 seconds reached..");
+           /// ---connection closed ///
+    }, 5000);
+}
+
+function pong() {
+    console.log("Cleared the timeout..");
+    clearTimeout(tm);
 }
 
 function send() {
