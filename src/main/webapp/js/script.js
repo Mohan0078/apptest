@@ -98,6 +98,6 @@ function heartbeat() {
         "content":""
     });
   ws.send(json_Ping); // sending a ping to server
-  setTimeout(heartbeat, 500);
+  setTimeout(heartbeat, 3000);
 }
 
